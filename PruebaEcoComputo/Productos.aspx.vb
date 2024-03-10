@@ -11,7 +11,7 @@ Public Class Productos
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             If Not IsPostBack Then
-                LblError.Text = ""
+                LblError.Text = String.Empty
                 Dim Productos As DataTable = RecuperarProductos()
                 Session("Productos") = Productos
                 gvProductos.DataSource = Productos
