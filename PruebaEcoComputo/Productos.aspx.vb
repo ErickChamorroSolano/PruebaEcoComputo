@@ -1,5 +1,4 @@
-﻿Imports System.ComponentModel.DataAnnotations
-Imports System.IO
+﻿Imports System.IO
 Imports OfficeOpenXml
 
 Public Class Productos
