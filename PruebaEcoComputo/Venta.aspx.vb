@@ -234,7 +234,7 @@ Public Class Venta
                 Total += CDec(itm.Item("Precio")) * CDec(itm.Item("Cantidad"))
             Next
 
-            lblTotal.Visible = True
+            lblTotal.Visible = IIf(gvVenta.Rows.Count <= 0, False, True)
             lblTotal.Text = "Total: $" & Total.ToString()
             ViewState("Total") = Total
         Catch ex As Exception
@@ -315,7 +315,9 @@ Public Class Venta
             End If
 
             'notificar mensaje antes de redirecionar
-            Response.Redirect("Default.aspx", False)
+            ScriptManager.RegisterStartupScript(Me.Page, Me.GetType(), "Notificacion", "alert('" & "Venta realizada con éxito. Recibo: " & Recibo.ToString() & "');", True)
+            btnLimpiar_Click(sender, e)
+            'Response.Redirect("Default.aspx", False)
         Catch ex As Exception
             LblError.Text = ex.Message
         End Try
@@ -324,6 +326,7 @@ Public Class Venta
     Protected Sub btnLimpiar_Click(sender As Object, e As EventArgs)
         Try
             ClearGrid()
+            lblTotal.Visible = False
             btnComprar.Visible = False
             gvVenta.DataBind()
         Catch ex As Exception
