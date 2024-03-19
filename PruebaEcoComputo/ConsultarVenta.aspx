@@ -10,6 +10,7 @@
         <ContentTemplate>
             <asp:Panel ID="pnlConsultarVenta" runat="server" CssClass="panelForm" Width="500px">
                 <table class="w-100">
+                    <%-- VENTA --%>
                     <tr>
                         <td>
                             <asp:Label runat="server" Text="Venta:" />
@@ -19,15 +20,17 @@
                             <cc1:FilteredTextBoxExtender ID="fteRecibo" runat="server" TargetControlID="txtRecibo" FilterType="Numbers" />
                         </td>
                     </tr>
+                    <%-- ERROR LABEL --%>
                     <tr>
                         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px;">
                             <asp:Label runat="server" ID="LblError" CssClass="Error" />
                         </td>
                     </tr>
+                    <%-- BOTONES --%>
                     <tr>
                         <td colspan="2" style="padding-top: 10px;">
                             <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click"/>
-                            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-success" Text="Cancelar" PostBackUrl="~/Default.aspx" UseSubmitBehavior="false"/>
+                            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-outline-primary" Text="Cancelar" PostBackUrl="~/Default.aspx" UseSubmitBehavior="false"/>
                         </td>
                     </tr>
                 </table>

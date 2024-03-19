@@ -10,6 +10,7 @@
         <ContentTemplate>
             <asp:Panel ID="pnlVenta" runat="server" CssClass="panelForm" Width="500px">
                 <table class="w-100">
+                    <%-- PRODUCTO ID --%>
                     <tr>
                         <td>
                             <asp:Label runat="server" Text="Producto:" />
@@ -18,6 +19,7 @@
                             <asp:DropDownList ID="ddlProductos" CssClass="form-select" runat="server" Width="100%" AutoPostBack="true" DataTextField="Nombre" DataValueField="Id" OnDataBound="ddlProductos_DataBound" OnSelectedIndexChanged="ddlProductos_SelectedIndexChanged"/>
                         </td>
                     </tr>
+                    <%-- PRECIO --%>
                     <tr>
                         <td>
                             <asp:Label runat="server" Text="Precio:" />
@@ -26,6 +28,7 @@
                             <asp:TextBox ID="txtPrecio" runat="server" Width="100%" CssClass="form-control" MaxLength="20" Enabled="false"/>
                         </td>
                     </tr>
+                    <%-- STOCK --%>
                     <tr>
                         <td>
                             <asp:Label runat="server" Text="Stock:" />
@@ -34,6 +37,7 @@
                             <asp:TextBox ID="txtStock" runat="server" Width="100%" CssClass="form-control" MaxLength="3" Enabled="false"/>
                         </td>
                     </tr>
+                    <%-- CANTIDAD --%>
                     <tr>
                         <td>
                             <asp:Label runat="server" Text="Cantidad:" />
@@ -43,15 +47,17 @@
                             <cc1:FilteredTextBoxExtender ID="fteCantidad" runat="server" TargetControlID="txtCantidad" FilterType="Custom, Numbers" FilterMode="ValidChars" ValidChars=".,"/>
                         </td>
                     </tr>
+                    <%-- ERROR LABEL --%>
                     <tr>
                         <td colspan="2" style="padding-top: 10px; padding-bottom: 10px;">
                             <asp:Label runat="server" ID="LblError" CssClass="Error" />
                         </td>
                     </tr>
+                    <%-- BOTONES --%>
                     <tr>
                         <td colspan="2" style="padding-top: 10px;">
                             <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAceptar_Click"/>
-                            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-success" Text="Cancelar" PostBackUrl="~/Default.aspx" UseSubmitBehavior="false"/>
+                            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-outline-primary" Text="Cancelar" PostBackUrl="~/Default.aspx" UseSubmitBehavior="false"/>
                         </td>
                     </tr>
                 </table>
@@ -59,11 +65,13 @@
 
             <br />
 
+            <%-- TABLA VENTAPRODUCTO --%>
             <asp:Panel ID="pnlTabla" runat="server" Width="100%">
                 <asp:Table ID="tblVenta" runat="server" Width="700px">
                     <asp:TableRow>
                         <asp:TableCell>
                             <asp:Button ID="btnComprar" runat="server" CssClass="btn btn-warning" Text="Comprar" Visible="false" OnClick="btnComprar_Click"/>
+                            &nbsp;
                             <asp:Button ID="btnLimpiar" runat="server" CssClass="btn btn-danger" Text="Limpiar" Visible="false" OnClick="btnLimpiar_Click"/>
                         </asp:TableCell>
                         <asp:TableCell style="text-align: right;">
@@ -71,7 +79,7 @@
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
-                        <asp:TableCell ColumnSpan="2">
+                        <asp:TableCell ColumnSpan="2" style="padding-top:5px;">
                             <asp:GridView ID="gvVenta" runat="server" Width="700px" CssClass="table table-primary table-hover table-striped" DataKeyNames="Id" AutoPostBack="True" AutoGenerateColumns="false">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" HeaderStyle-Width="50px" ItemStyle-HorizontalAlign="Center" SortExpression="Id" Visible="false">
